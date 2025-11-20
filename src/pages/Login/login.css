@@ -1,0 +1,131 @@
+.login-container {
+  padding: 0;
+}
+
+.login-form-wrapper {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+.login-form-wrapper h1 {
+  font-size: 2.5rem;
+  color: #3e3e3e;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.form-input {
+  padding: 0.75rem 1rem !important;
+  border: 2px solid #000000 !important;
+  border-radius: 0 !important;
+}
+.form-input::placeholder {
+  color: #000 !important;
+  opacity: 1;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.form-input:focus {
+  border-color: #333;
+  box-shadow: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+.custom-checkbox .form-check-input {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #000 !important;
+  border-radius: 0 !important;
+}
+
+.custom-checkbox {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px;
+}
+
+.custom-checkbox .form-check-input:checked {
+  background-color: #000 !important;
+  border-color: #000 !important;
+}
+
+.sign-in-btn {
+  padding: 0.8rem !important;
+  font-weight: 600;
+  background-color: #444;
+  border: none;
+  border-radius: 0 !important;
+}
+
+.sign-in-btn:hover {
+  background-color: #333;
+}
+
+.divider {
+  text-align: center;
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 2px;
+  background-color: #cfcfcf;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.divider span {
+  background-color: white;
+  padding: 0 1rem;
+  color: #3d3d3d;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.social-btn {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #3e3e3e !important;
+  padding: 0;
+}
+
+.social-btn:hover {
+  background-color: #f8f9fa;
+  border-color: #333;
+}
+
+.social-btn img {
+  object-fit: contain;
+  width: 24px;
+}
+
+.illustration-wrapper {
+  padding: 2rem;
+}
+
+.walking-person-illustration img {
+  width: 80%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .login-form-wrapper {
+    padding: 1.5rem;
+  }
+}
