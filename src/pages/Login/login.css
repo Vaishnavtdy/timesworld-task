@@ -103,11 +103,12 @@
   justify-content: center;
   border: 2px solid #3e3e3e !important;
   padding: 0;
+  transition: transform 0.2s ease !important;
 }
 
 .social-btn:hover {
-  background-color: #f8f9fa;
-  border-color: #333;
+  transform: scale(1.05) !important;
+  background-color: transparent !important;
 }
 
 .social-btn img {

@@ -11,7 +11,7 @@ body {
 }
 
 .tab-active {
-  border-bottom: 2px solid #000 !important; /* adjust color/thickness */
+  border-bottom: 2px solid #000 !important;
 }
 .tab-inactive {
   border-bottom: 2px solid transparent !important;

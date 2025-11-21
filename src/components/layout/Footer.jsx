@@ -1,11 +1,30 @@
-import React from "react";
+import LinkedinIcon from "../../assets/icons/linkedin.png";
+import FacebookIcon from "../../assets/icons/facebook.png";
+import TwitterIcon from "../../assets/icons/twitter.png";
+import YTIcon from "../../assets/icons/youtube.png";
+import { Button } from "react-bootstrap";
+import "./layout.css";
 
 export default function Footer() {
   return (
-    <footer style={{ padding: "40px 0", marginTop: "40px", background: "#f5f5f5" }}>
+    <footer className="py-6 mt-5 mb-5 footer">
       <div className="container text-center">
-        <p className="mb-2">© 2024 My Website. All rights reserved.</p>
-        <p className="text-muted small">Example@email.com</p>
+        <div className="social-login-buttons d-flex justify-content-center gap-3">
+          <Button variant="outline-secondary" className="social-btn rounded-circle">
+            <img src={FacebookIcon} alt="Facebook" />
+          </Button>
+          <Button variant="outline-secondary" className="social-btn rounded-circle">
+            <img src={TwitterIcon} alt="Twitter" />
+          </Button>
+          <Button variant="outline-secondary" className="social-btn rounded-circle">
+            <img src={LinkedinIcon} alt="LinkedIn" />
+          </Button>
+          <Button variant="outline-secondary" className="social-btn rounded-circle">
+            <img src={YTIcon} alt="YouTube" />
+          </Button>
+        </div>
+        <p className="mt-5 mb-2 custom-text text-center fs-6">Example@email.com </p>
+        <p className="mt-4 mb-3 custom-text text-center fs-6">Copyright © 2020 Name. All rights reserved.</p>
       </div>
     </footer>
   );

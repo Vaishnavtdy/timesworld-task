@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import "./login.css";
 import GoogleIcon from "../../assets/icons/google.png";
@@ -5,8 +7,55 @@ import LinkedinIcon from "../../assets/icons/linkedin.png";
 import FacebookIcon from "../../assets/icons/facebook.png";
 import TwitterIcon from "../../assets/icons/twitter.png";
 import Person from "../../assets/images/person.png";
+import { validatePassword, validateRequired } from "../../utils/validation";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState({});
+  const [validated, setValidated] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: "",
+      });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setValidated(true);
+
+    const newErrors = {};
+
+    const emailError = validateRequired(formData.email, "Username or email");
+    if (emailError) {
+      newErrors.email = emailError;
+    }
+
+    const passwordError = validatePassword(formData.password);
+    if (passwordError) {
+      newErrors.password = passwordError;
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      navigate("/home");
+    }
+  };
+
   return (
     <Container fluid className="login-container">
       <Row className="min-vh-100">
@@ -15,19 +64,37 @@ const LoginPage = () => {
             <h1 className="mb-4">Sign In</h1>
 
             <p className="mb-4 fs-6 fw-semibold">
-              New user?
+              New user? {""}
               <a href="/create-account" className="text-primary text-decoration-none">
                 Create an account
               </a>
             </p>
 
-            <Form>
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="email">
-                <Form.Control type="text" placeholder="Username or email" className="form-input" />
+                <Form.Control
+                  type="text"
+                  name="email"
+                  placeholder="Username or email"
+                  className="form-input"
+                  value={formData.email}
+                  onChange={handleChange}
+                  isInvalid={!!errors.email}
+                />
+                <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="password">
-                <Form.Control type="password" placeholder="Password" className="form-input" />
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  className="form-input"
+                  value={formData.password}
+                  onChange={handleChange}
+                  isInvalid={!!errors.password}
+                />
+                <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group className="mb-4" controlId="checkbox">
