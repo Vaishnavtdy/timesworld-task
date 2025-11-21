@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Container, Row } from "react-bootstrap";
 import "../../App.css";
@@ -7,11 +8,17 @@ import { selectSelectedRegion } from "../../features/countries/countriesSelector
 export default function Header() {
   const dispatch = useDispatch();
   const selectedRegion = useSelector(selectSelectedRegion);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const tabs = ["All", "Asia", "Europe"];
 
   const handleTabClick = (region) => {
     dispatch(setSelectedRegion(region));
+    setMenuOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   return (
@@ -21,7 +28,7 @@ export default function Header() {
           <Col className="d-flex justify-content-between align-center">
             <h2 className="countries-title fw-bold fs-5">Countries</h2>
 
-            <div className="tabs-container">
+            <div className="tabs-container desktop-tabs">
               {tabs.map((tab) => (
                 <button
                   key={tab}
@@ -32,8 +39,28 @@ export default function Header() {
                 </button>
               ))}
             </div>
+
+            <button className="hamburger-menu" onClick={toggleMenu} aria-label="Toggle menu">
+              <span className={`hamburger-line ${menuOpen ? "open" : ""}`}></span>
+              <span className={`hamburger-line ${menuOpen ? "open" : ""}`}></span>
+              <span className={`hamburger-line ${menuOpen ? "open" : ""}`}></span>
+            </button>
           </Col>
         </Row>
+
+        {menuOpen && (
+          <div className="mobile-menu">
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => handleTabClick(tab)}
+                className={`mobile-tab-button ${selectedRegion === tab ? "tab-active" : "tab-inactive"}`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+        )}
       </Container>
     </header>
   );
