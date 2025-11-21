@@ -1,12 +1,19 @@
 import "./App.css";
-import LoginPage from "./pages/Login/LoginPage";
 
-function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login/LoginPage";
+import Home from "./pages/Home/HomePage";
+import LayoutWrapper from "./components/layout/LayoutWrapper";
+
+export default function App() {
   return (
-    <>
-      <LoginPage />
-    </>
+    <BrowserRouter>
+      <LayoutWrapper>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </LayoutWrapper>
+    </BrowserRouter>
   );
 }
-
-export default App;
