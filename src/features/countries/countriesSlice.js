@@ -4,11 +4,7 @@ import { fetchCountriesAPI } from "./countriesAPI";
 export const fetchCountries = createAsyncThunk("countries/fetchCountries", async (_, { rejectWithValue }) => {
   try {
     const data = await fetchCountriesAPI();
-    return data.map((country) => ({
-      name: country.name,
-      region: country.region,
-      flag: country.flag || country.flags?.svg || country.flags?.png,
-    }));
+    return data;
   } catch (error) {
     return rejectWithValue(error.response?.data || error.message);
   }

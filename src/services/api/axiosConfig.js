@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "/api-countries",
+  baseURL: "https://restcountries.com/v2",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
